@@ -48,7 +48,7 @@ class Permission extends MY_Controller {
                {
                   $data = array();
 
-                  $data['role_id']      = $role_id;
+                  $data['role_id']  = $role_id;
                   $data['operation_id'] = $key;
                   $data['is_add']          = isset($_POST['is_add'][$key]) && !empty($_POST['is_add'][$key]) ? $_POST['is_add'][$key] : 0;
                   $data['is_edit']         = isset($_POST['is_edit'][$key]) && !empty($_POST['is_edit'][$key]) ? $_POST['is_edit'][$key] : 0;

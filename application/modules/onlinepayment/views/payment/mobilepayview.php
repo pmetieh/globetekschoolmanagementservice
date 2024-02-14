@@ -1,5 +1,5 @@
 <div class="row">
-	<h1>Mobile Money Payment</h1>
+<h2 style="padding-left:20px;">Mobile Money Payment</h2>
 <form id="paymentForm" name="paymentForm" action="makeMomoPayment" method="post" enctype="multipart/form-data">
 
 <div class="row jumbotron">
@@ -68,12 +68,11 @@
  	<div class="form-group">
                 <div class="col-lg-4">
                     <button type="submit" class="btn btn-danger btn-lg" role="button"  id="btnsubmit"  name="submit">
-                        <span class="glyphicon glyphicon-save"></span>Save</button>
+					<i class="fa fa-paper-plane" aria-hidden="true">Send Payment</i></button>
                 </div>
                 <div class="col-lg-4">
-                    <button type="reset" class="btn btn-default btn-lg" role="button" name="cancel">
-                        <span class="glyphicon glyphicon-erase"></span>
-                        Cancel</button>
+                    <button type="reset" class="btn btn-danger btn-lg" role="button" name="cancel">
+					<i class="fa fa-times" aria-hidden="true"></i>Cancel Payment</button>
    		         </div>
    </div>
  </div>

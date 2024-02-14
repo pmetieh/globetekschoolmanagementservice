@@ -63,7 +63,9 @@ class Teacher extends MY_Controller {
             if ($this->form_validation->run() === TRUE) {
                 $data = $this->_get_posted_teacher_data();
 
-                $insert_id = $this->teacher->insert('teachers', $data);
+                var_dump($data);
+
+               $insert_id = $this->teacher->insert('teachers', $data);
                 if ($insert_id) {
                     success($this->lang->line('insert_success'));
                     redirect('teacher/index/'.$data['school_id']);
@@ -75,7 +77,7 @@ class Teacher extends MY_Controller {
                 error($this->lang->line('insert_failed'));
                 $this->data['post'] = $_POST;
             }
-        }
+        } 
 
         $this->data['teachers'] = $this->teacher->get_teacher_list();
         $this->data['roles'] = $this->teacher->get_list('roles', array('status' => 1), '', '', '', 'id', 'ASC');

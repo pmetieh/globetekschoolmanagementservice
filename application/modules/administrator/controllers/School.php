@@ -132,7 +132,7 @@ class School extends MY_Controller {
 
         $this->data['schools'] = $this->school->get_list('schools', array('status' => 1), '','', '', 'id', 'ASC');
         $this->data['themes'] = $this->school->get_list('themes', array(), '','', '', 'id', 'ASC');
-        $this->data['edit'] = TRUE;       
+        $this->data['edit'] = TRUE;  //this line loads the view in new tabbe on the page     
         $this->layout->title($this->lang->line('edit') . ' | ' . SMS);
         $this->layout->view('school/index', $this->data);
     }

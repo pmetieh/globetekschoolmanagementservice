@@ -7,7 +7,7 @@
                         <?php  echo $this->global_setting->brand_name; ?>
                     </span>
                 <?php }else{ ?>
-                     <span>Globetek School Management System</span>    
+                     <span>Global School Management Service</span>    
                 <?php } ?>                
                 
                 <?php if($this->global_setting->brand_logo){ ?>
@@ -59,13 +59,30 @@
                             <li><a  href="<?php echo site_url('theme'); ?>"><i class="fa fa-cubes"></i> <?php echo $this->lang->line('theme'); ?></a></li> 
                     <?php } ?>  
                     <?php //echo base_url('cardpayment'); ?>
-                     <?php if(has_permission(VIEW, 'theme', 'theme')){ ?>
-                            <li><a  href="<?php echo base_url('cardpayment'); ?>"><i class="fa fa-money"></i> <?php echo $this->lang->line('cardpayment'); ?></a></li> 
-                    <?php } ?>  
 
-                    <?php if(has_permission(VIEW, 'theme', 'theme')){ ?>
-                            <li><a  href="<?php echo base_url('mobilemoney'); ?>"><i class="fa fa-money"></i> <?php echo $this->lang->line('mobilemoney'); ?></a></li> 
-                    <?php } ?>  
+                    <?php if(has_permission(VIEW, 'onlinepayment', 'cardpay') || has_permission(VIEW, 'onlinepayment', 'mobilepay')){ ?>
+                    <li><a><i class="fa fa-money"></i><?php echo $this->lang->line('onlinepayment'); ?> <span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu">
+                     
+                            <li><a  href="<?php echo site_url('onlinepayment/paymentcontroller/cardpayView'); ?>"><?php echo $this->lang->line('cardpayment'); ?></a></li> 
+                    
+                            <li><a  href="<?php echo site_url('onlinepayment/paymentcontroller/mobilepayView'); ?>"><?php echo $this->lang->line('mobilemoney'); ?></a></li> 
+                     
+                    
+                         </ul>
+                <?php } ?>
+
+                <?php if(has_permission(VIEW, 'courseplanning', 'addndrop') || has_permission(VIEW, 'courseplanning', 'plancourses')){ ?>
+                <li><a><i class="fa fa-shopping-cart"></i> <?php echo $this->lang->line('courseplanning'); ?> <span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu">
+                            <li><a  href="<?php echo site_url('plancourses/courseplanning/plancourses'); ?>"><?php echo $this->lang->line('courseplanning'); ?></a></li>                                                 
+                            <li><a  href="<?php echo site_url('plancourses/courseplanning/addndrop'); ?>"><?php echo $this->lang->line('addndrop'); ?></a></li> 
+                     
+                </ul>
+                <?php } ?> 
+                    <?php if(has_permission(VIEW, 'gradebook', 'creategradebookitem')){ ?>
+                        <li><a  href="<?php echo site_url('gradebook/gradebook/index'); ?>"><i class="fa fa-book" aria-hidden="true"></i> <?php echo $this->lang->line('gradebooksetup'); ?></a></li>
+                    <?php } ?>
 
                     <?php if(has_permission(VIEW, 'language', 'language')){ ?>
                         <li><a  href="<?php echo site_url('language'); ?>"><i class="fa fa-language"></i> <?php echo $this->lang->line('language'); ?></a></li>
@@ -93,6 +110,18 @@
                                 <?php } ?>
                                 <?php if(has_permission(VIEW, 'administrator', 'school')){ ?>   
                                     <li><a href="<?php echo site_url('administrator/school/index'); ?>"> <?php echo $this->lang->line('manage_school'); ?></a></li>
+                                <?php } ?>
+                                <?php if(has_permission(VIEW, 'administrator', 'setting')){ ?>   
+                                    <li><a href="<?php echo site_url('administrator/managemodule/index'); ?>"> <?php echo $this->lang->line('managemodule'); ?></a></li>
+                                <?php } ?>
+                                <?php if(has_permission(VIEW, 'administrator', 'setting')){ ?>   
+                                    <li><a href="<?php echo site_url('administrator/college/index'); ?>"> <?php echo $this->lang->line('createcollege'); ?></a></li>
+                                <?php } ?>
+                                <?php if(has_permission(VIEW, 'administrator', 'setting')){ ?>   
+                                    <li><a href="<?php echo site_url('administrator/course/index'); ?>"> <?php echo $this->lang->line('addcourse'); ?></a></li>
+                                <?php } ?>
+                                <?php if(has_permission(VIEW, 'administrator', 'setting')){ ?>   
+                                    <li><a href="<?php echo site_url('administrator/department/index'); ?>"> <?php echo $this->lang->line('adddepartment'); ?></a></li>
                                 <?php } ?>
                                 <?php if(has_permission(VIEW, 'administrator', 'payment')){ ?> 
                                 <li><a href="<?php echo site_url('administrator/payment/index'); ?>"><?php echo $this->lang->line('payment_setting'); ?></a></li>

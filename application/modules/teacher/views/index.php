@@ -34,7 +34,7 @@
                         <?php } ?> 
                          
                         <li class="li-class-list">
-                           <?php if($this->session->userdata('role_id') == SUPER_ADMIN){  ?>                                 
+                           <?php if($this->session->userdata('role_id') == SUPER_ADMIN){ ?>                            
                                 <select  class="form-control col-md-7 col-xs-12" id="filter_school_id" onchange="get_teacher_by_school(this.value);">
                                         <option value="<?php echo site_url('teacher/index'); ?>">--<?php echo $this->lang->line('select_school'); ?>--</option> 
                                     <?php foreach($schools as $obj ){ ?>
@@ -46,7 +46,7 @@
                             
                     </ul>
                     <br/>
-                    
+                                 
                     <div class="tab-content">
                         <div  class="tab-pane fade in <?php if(isset($list)){ echo 'active'; }?>" id="tab_teacher_list" >
                             <div class="x_content">

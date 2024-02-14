@@ -1,15 +1,15 @@
 
 <div class="row">
-	<h1>Pay with your debit card</h1>
+	<h2 style="padding-left:20px;">Pay With Your Debit/Credit Card</h2>
 <form id="paymentForm" name="paymentForm" action="postpayment" method="post" enctype="multipart/form-data">
 		<div class="row jumbotron">
     
 
 	<div class="form-group">
-	<div class="col-md-5">
+	<div class="col-md-6">
 		<label class="control-label" for="customerFirstName">First Name</label>
 	</div>
-		<div class="col-md-5">
+		<div class="col-md-6">
 			<input type="text" class="form-control" id="customerFirstName" name="customerFirstName" placeholder="Fisrt Name" />
 		</div>
 
@@ -27,14 +27,20 @@
     
 
 	<div class="form-group">
-		<label for="customerEmail" class="col-md-6 control-label">Email Address</label>
+		<div class="col-md-6">
+			<label for="customerEmail" class="control-label">Email Address</label>
+		</div>
+		
 		<div class="col-md-6">
 			<input type="text" class="form-control" id="customerEmail" name="customerEmail" placeholder="Email Address" />
 		</div>
 	</div>
     
 	<div class="form-group">
-		<label for="customerPhoneNumber" class="col-md-6 control-label">Phone Number</label>
+		<div class="col-md-6">
+			<label for="customerPhoneNumber" class="col-md-6 control-label">Phone Number</label>
+		</div>
+		
 		<div class="col-md-6">
 			<input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" />
 		</div>
@@ -42,7 +48,10 @@
 
     
 	<div class="form-group">
-		<label for="description" class="col-md-6 control-label">Description</label>
+		<div class="col-md-6">
+			<label for="description" class="control-label">Description</label>
+		</div>
+		
 		<div class="col-md-6">
 			<input type="text" class="form-control" id="description" name="description" value="Entrance Exam"/>
 			<input type="hidden" class="form-control" id="referenceNumber" name="referenceNumber" value="refNumber" />
@@ -52,7 +61,10 @@
 
     
 	<div class="form-group">
-		<label for="amount" class="col-md-6 control-label">Amount</label>
+	<div class="col-md-6">
+		<label for="amount" class="control-label">Amount</label>
+	</div>
+		
 		<div class="col-md-6">
 			<input type="text" class="form-control" id="amount" name="amount" placeholder="Amount that you are paying" />
 			<input type="hidden" class="form-control" id="serviceKey" name="serviceKey" value="serviceKey" />
@@ -60,26 +72,30 @@
 	</div>
 
     
-	<div class="form-group">
-		<!--<label for="noOfItems" class="col-md-6 control-label">No Of Items</label>-->
+	<!--<div class="form-group">
+		<label for="noOfItems" class="col-md-6 control-label">No Of Items</label>
 		<div class="col-md-6">
 			<input type="text" style="display:none;" class="form-control" id="noOfItems" name="noOfItems" value="1" placeholder="The number of things that you are paying for" />
 		</div>
-	</div>
+	</div>-->
 
    
 	<div class="form-group">
-		<label for="date" class="col-md-6 control-label">Date</label>
 		<div class="col-md-6">
-			<input type="text" class="form-control" id="date" name="date" value="{{ date('d/m/Y h:m:s') }}"/>
+			<label for="date" class="col-md-6 control-label">Payment Date</label>
+		</div>
+		
+		<div class="col-md-6">
+			<input type="date" class="form-control" id="date" name="date" />
 		</div>
 	</div>
 
    
 	<div class="form-group">
-		<label for="nameoncard" class="col-md-6 control-label">
-			Name On Card
-		</label>
+		<div class="col-md-6">
+			<label for="nameoncard" class="control-label">Name On Card</label>
+		</div>
+		
 		<div class="col-md-6">
 			<input type="text" name="nameoncard" id="nameoncard" class="form-control">
 		</div>
@@ -87,9 +103,12 @@
 
    
 	<div class="form-group">
-		<label for="cardnumber" class="col-md-6 control-label">
+		<div class="col-md-6">
+			<label for="cardnumber" class="control-label">
 			Card Number
 		</label>
+		</div>
+		
 		<div class="col-md-6">
 			<input type="text" name="cardnumber" id="cardnumber" class="form-control" placeholder="4111111111111111">
 		</div>
@@ -97,9 +116,12 @@
 
    
 	<div class="form-group">
+		<div class="col-md-6">
 		<label for="month" class="col-md-6 control-label">
 			Expiration Date
 		</label>
+		</div>
+		
 		<div class="col-md-6">
 			<div class="col-md-4 pull-left">
 			<select class="form-control" name="month" id="month">
@@ -135,20 +157,24 @@
 			</select>
 			</div>
 		</div>
-
 	</div>
 
    
 	<div class="form-group">
-        <label class="col-md-6 control-label" for="cvv">Card CVV</label>
-        <div class="col-sm-6">
+		<div class="col-md-6">
+			<label class="col-md-6 control-label" for="cvv">Card CVV</label>
+		</div>
+        <div class="col-md-6">
           <input type="text" maxlength="3" class="form-control" name="cvvCode" id="cvvCode" placeholder="123">
         </div>
     </div>
 
    
 	<div class="form-group">
-		<label for="description" class="col-md-6 control-label">Currency Code</label>
+		<div class="col-md-6 ">
+		<label for="description" class="control-label">Currency Code</label>
+		</div>
+		
 		<div class="col-md-6">
 			<select class="form-control" id="curCode" name="curCode">
 				<option value="566">Naira</option>
@@ -161,6 +187,19 @@
 	</div>
 </div>
 
+<!--<div class="row"><span class="glyphicon glyphicon-save"></span>-->
+ 	<div class="form-group">
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-danger btn-lg" role="button"  id="btnsubmit"  name="submit">
+					<i class="fa fa-paper-plane" aria-hidden="true">Send Payment</i></button>
+                </div>
+                <div class="col-md-6">
+                    <button type="reset" class="btn btn-danger btn-lg" role="button" name="cancel">
+					<i class="fa fa-times" aria-hidden="true"></i>Cancel Payment
+                        </button>
+   		         </div>
+   </div>
+ <!--</div>-->
 	</form>
 
 

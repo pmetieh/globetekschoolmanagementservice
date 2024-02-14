@@ -77,3 +77,14 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['mobilemoney'] = 'paymentcontroller/mobilepayView';
 $route['cardpayment'] = 'paymentcontroller/cardpayView';
+$route['makeMomoPayment'] = 'paymentcontroller/momopay';
+$route['postpayment'] = 'paymentcontroller/cardpay';
+$route['addcollege'] = 'college/addCollege';
+$route['managemodule'] = 'managemodule/index';
+$route['addOperation'] = 'managemodule/addOperation';
+$route['addGradeBookItem'] = 'gradebook/createGradeBookItem';
+
+$route['success-flash'] = 'MyFlashController/success';
+$route['error-flash'] = 'MyFlashController/error';
+$route['warning-flash'] = 'MyFlashController/warning';
+$route['info-flash'] = 'MyFlashController/info';

@@ -11,6 +11,7 @@
             
             <div class="x_content quick-link">
                 <?php $this->load->view('quick-link'); ?>
+                <h1>Quick Link</h1>
             </div>
             
             <div class="x_content">
@@ -406,7 +407,7 @@
                             </div>
                         </div>  
 
-                        <?php if(isset($edit)){ ?>
+                        <?php if(!isset($edit)){ ?>
                         <div class="tab-pane fade in active" id="tab_edit_school">
                             <div class="x_content"> 
                                <?php echo form_open_multipart(site_url('administrator/school/edit/'.$school->id), array('name' => 'edit', 'id' => 'edit', 'class'=>'form-horizontal form-label-left'), ''); ?>

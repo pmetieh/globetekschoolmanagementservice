@@ -429,45 +429,47 @@ Setup Subject Gradebook</h5></a></li>
             //we are reading values from the third row
             for (let i = 2; i < rowColtn.length; i++) {
              
-              for (let n = 1; n < rowColtn[0].cells.length; n++) {
+              for (let n = 2; n < rowColtn[0].cells.length; n++) {
                 var gradeItems = {}; //create a new object with each iteration of the loop
                //rowColtn[0].cells
                // alert(rowColtn[0].cells[n].innerText);
 
                //get the grade item ids from the second row
 
-               //if it is the second cell in the row, i.e n = 1, set the property name to studentId
-               if(n == 1)
-               {
-                var memName = "studentId";
+               //if it is the second cell in the row, i.e n =  1, set the property name to studentId
+              // if(n == 1)
+               //{
+                //var memName = "studentId";
                 gradeItems["markingprd"] = mrkprd;
                 gradeItems["subjectId"] = document.getElementById("subjectId").value;
                 gradeItems["schoolId"] = document.getElementById("schoolid").value;
                 gradeItems["sectionid"] = document.getElementById("sectionid").value;
                 gradeItems["class_id"] = document.getElementById("class_name").value;
                 gradeItems["accademicYear"] = document.getElementById('academicyearId').value; 
-                 alert(rowColtn[i].cells[n].getElementsByTagName('input')[0].value); 
-                gradeItems["studentId"] = rowColtn[2].cells[1].innerText;
+                 alert(rowColtn[i].cells[1].getElementsByTagName('input')[0].value); 
+                gradeItems["studentId"] = rowColtn[i].cells[1].getElementsByTagName('input')[0].value;
                 //var memName = rowColtn[1].cells[n].innerText; 
-               }
-               else{
+                var memName = rowColtn[1].cells[n].innerText;
+                gradeItems[memName] = rowColtn[i].cells[n].getElementsByTagName('input')[0].value; 
+              // }
+               /* else{
                 var memName = rowColtn[1].cells[n].innerText; //assign the grade item id as property name 
                 // and assign the innerText to the id property 
-               }
+               } */
                // var memName = rowColtn[1].cells[n].innerText; //'"' + rowColtn[0].cells[n].innerText +'"';
                // memName = memName;
                //  console.log("Mem name : "+ memName);
                //console.log(rowColtn[i].cells[n].getElementsByTagName('input')[0].value);
-                gradeItems[memName] = rowColtn[i].cells[n].getElementsByTagName('input')[0].value; //rowColtn[i].cells[n].innerText;// + ':';
+               /*  gradeItems[memName] = rowColtn[i].cells[n].getElementsByTagName('input')[0].value; //rowColtn[i].cells[n].innerText;// + ':';
 
                 gradeItems["markingprd"] = mrkprd;
                 gradeItems["subjectId"] = document.getElementById("subjectId").value;
                 gradeItems["schoolId"] = document.getElementById("schoolid").value;
                 gradeItems["sectionid"] = document.getElementById("sectionid").value;
                 gradeItems["class_id"] = document.getElementById("class_name").value;
-                gradeItems["accademicYear"] = document.getElementById('academicyearId').value;
+                gradeItems["accademicYear"] = document.getElementById('academicyearId').value; */
 
-                console.log("gradeItems["+memName+"] : "+gradeItems[memName]); 
+               // console.log("gradeItems["+memName+"] : "+gradeItems[memName]); 
                 //console.log('Marking period : '+gradeItems["markingprd"]);
 
                 //start assigning values from cell 1 in every row, because cell 0 has the students Name

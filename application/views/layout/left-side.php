@@ -135,6 +135,9 @@
                                 <?php if(has_permission(VIEW, 'administrator', 'year')){ ?>   
                                     <li><a href="<?php echo site_url('administrator/year/index'); ?>"> <?php echo $this->lang->line('academic_year'); ?></a></li>
                                  <?php } ?>
+                                 <?php if(has_permission(VIEW, 'administrator', 'year')){ ?>   
+                                    <li><a href="<?php echo site_url('administrator/markingperiod/index'); ?>"> <?php echo $this->lang->line('marking_period'); ?></a></li>
+                                 <?php } ?>
                                 <?php if(has_permission(VIEW, 'administrator', 'role')){ ?>   
                                     <li><a href="<?php echo site_url('administrator/role/index'); ?>"> <?php echo $this->lang->line('user_role'); ?> (ACL)</a></li> 
                                 <?php } ?>

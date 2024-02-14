@@ -1036,3 +1036,4 @@ $lang['addndrop'] = "Add N Drop";
 $lang['addcourse'] = "Add Course";
 $lang['createcollege'] = "Create College";
 $lang['adddepartment'] = "Add Department";
+$lang['marking_period'] = "Add Marking Periods";

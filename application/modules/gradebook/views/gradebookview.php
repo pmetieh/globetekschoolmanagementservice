@@ -89,7 +89,6 @@ Setup Subject Gradebook</h5></a></li>
 
           for($i = 0; $i < count($subjects); $i++)
                 {
-
                   echo '<option value="'.$subjects[$i]->id.'">'.$subjects[$i]->name.'</option>';
                 }
               ?>
@@ -144,8 +143,8 @@ Setup Subject Gradebook</h5></a></li>
       <input type="text" class="form-control" id="min_grade" name="min_grade" placeholder="Minimum grade allowed for this activity" />
     </div>
   </div>
-    
-    <div class="form-group">
+
+  <div class="form-group">
 	<div class="col-md-6">
 		<label for="created_by" class="control-label">Created By</label>
 	</div>
@@ -256,6 +255,47 @@ Setup Subject Gradebook</h5></a></li>
 
   </div>
 
+  <div class="form-group">
+	<div class="col-md-6">
+		<label for="created_by" class="control-label">Marking Period</label>
+	</div>
+		<div class="col-md-6">
+      <select  class="form-control" name="markingperiodId" id="markingperiodId">
+      <?php
+    		/* 	$mrkp = $this->db->get('markingperiod')->result();
+
+    			for($i = 0; $i < count($mrkp); $i++)
+	    					{
+
+	    						echo '<option value="'.$mrkp[$i]->id.'">'.$mrkp[$i]->marking_periodName.'</option>';
+	    					} */
+    					?>
+    					       
+      </select>
+    </div>
+  </div>
+
+ 
+  <div class="form-group">
+	<div class="col-md-6">
+		<label for="created_by" class="control-label">Current Accademic Year</label>
+	</div>
+		<div class="col-md-6">
+      
+      <input type="text"  class="form-control" name="academicyearName" id="academicyearName"  
+      value="">
+      <input type="hidden"   class="form-control" name="academicyearId" id="academicyearId"  
+      value="">
+      
+    
+    </div>
+  </div>
+
+
+
+	<!-- 	</div>
+	</div> -->
+
    <div class="row">
      <div class="col-md-12">
        <h4>Student Grade Items</h4>
@@ -316,6 +356,7 @@ Setup Subject Gradebook</h5></a></li>
     
     $(function(){
 
+      getAccademicYear();
       //submit form
     //  $('#gradesForm').submit
         //gradebook setup
@@ -328,7 +369,9 @@ Setup Subject Gradebook</h5></a></li>
         //entergrades
       $('#schoolid').on('change', function(){
         getClasses_entergrades();
-       // getSections();
+        getmarkingperiod_entergrades();
+        getAccademicYear();
+       // getSections();getmarkingperiod_entergrades
        $('#grades_table').empty();  
       });
 
@@ -366,39 +409,97 @@ Setup Subject Gradebook</h5></a></li>
             //alert("Submitting form ..\n");
 
             //build the json aobject array from the table data and send it to the server
+            //var accademicYearId = document.getElementById('academicyearId').value;
             var gradesItemTable = document.getElementById("grades_table");
-
+            var mrkprd = document.getElementById('markingperiodId').value;
             var rowColtn = gradesItemTable.rows;
             var cellColtn;
-            var gradeItems = [];
+            //var gradeItems = {};
             var allgradeItems = [];
-            var keys = Object.keys(gradeItems);
+            //var keys = Object.keys(gradeItems);
+
+            var totalRows = rowColtn.length;
+            var actualDataRows = totalRows - 2; //the data starts on the third row i.e row no 2
+            //starting from zero
+            console.log(' Number of Tablerows : ' + totalRows);
+
+            var allItemStartIndex = 0;
             
           //  alert("Number of rows : "+ rowColtn.length);
-
-            for (let i = 1; i < rowColtn.length; i++) {
+            //we are reading values from the third row
+            for (let i = 2; i < rowColtn.length; i++) {
+             
               for (let n = 1; n < rowColtn[0].cells.length; n++) {
-                //rowColtn[0].cells
+                var gradeItems = {}; //create a new object with each iteration of the loop
+               //rowColtn[0].cells
                // alert(rowColtn[0].cells[n].innerText);
-                var memName = rowColtn[0].cells[n].innerText;//'"' + rowColtn[0].cells[n].innerText +'"';
+
+               //get the grade item ids from the second row
+
+               //if it is the second cell in the row, i.e n = 1, set the property name to studentId
+               if(n == 1)
+               {
+                var memName = "studentId";
+                gradeItems["markingprd"] = mrkprd;
+                gradeItems["subjectId"] = document.getElementById("subjectId").value;
+                gradeItems["schoolId"] = document.getElementById("schoolid").value;
+                gradeItems["sectionid"] = document.getElementById("sectionid").value;
+                gradeItems["class_id"] = document.getElementById("class_name").value;
+                gradeItems["accademicYear"] = document.getElementById('academicyearId').value; 
+                 alert(rowColtn[i].cells[n].getElementsByTagName('input')[0].value); 
+                gradeItems["studentId"] = rowColtn[2].cells[1].innerText;
+                //var memName = rowColtn[1].cells[n].innerText; 
+               }
+               else{
+                var memName = rowColtn[1].cells[n].innerText; //assign the grade item id as property name 
+                // and assign the innerText to the id property 
+               }
+               // var memName = rowColtn[1].cells[n].innerText; //'"' + rowColtn[0].cells[n].innerText +'"';
                // memName = memName;
-              //  console.log("Mem name : "+ memName);
-                //console.log(rowColtn[i].cells[n].getElementsByTagName('input')[0].value);
+               //  console.log("Mem name : "+ memName);
+               //console.log(rowColtn[i].cells[n].getElementsByTagName('input')[0].value);
                 gradeItems[memName] = rowColtn[i].cells[n].getElementsByTagName('input')[0].value; //rowColtn[i].cells[n].innerText;// + ':';
-                 
+
+                gradeItems["markingprd"] = mrkprd;
+                gradeItems["subjectId"] = document.getElementById("subjectId").value;
+                gradeItems["schoolId"] = document.getElementById("schoolid").value;
+                gradeItems["sectionid"] = document.getElementById("sectionid").value;
+                gradeItems["class_id"] = document.getElementById("class_name").value;
+                gradeItems["accademicYear"] = document.getElementById('academicyearId').value;
+
                 console.log("gradeItems["+memName+"] : "+gradeItems[memName]); 
-                
+                //console.log('Marking period : '+gradeItems["markingprd"]);
+
                 //start assigning values from cell 1 in every row, because cell 0 has the students Name
                 //and cell 1 has the student Id.
+                
+                allgradeItems.push(gradeItems);
               }
-              allgradeItems[i] = gradeItems;
-             // console.log(typeof gradeItems);
-             // console.log(gradeItems.length);
               
+
+              
+              //console.log("gradeItems[markingprd] : "+gradeItems["markingprd"]);
+              //console.log("gradeItems[schoolId] : "+gradeItems["schoolId"]);
+              //console.log("gradeItems[subjectId] : "+gradeItems["subjectId"]);
+
+              //console.log(Object.keys(gradeItems));   
+              
+              console.log("Added one grade Item : ");
+           //  console.log(allgradeItems);
               
             }
-
-            console.log('All gradeItems '+allgradeItems);
+            //console.log(JSON.stringify(allgradeItems));
+            
+            console.log('All gradeItems length '+allgradeItems.length);
+            $.ajax({
+              url: "<?php echo base_url(); ?>gradebook/saveGradebookitems",
+              type: 'POST',
+              datatype: 'json',
+              data: JSON.stringify(allgradeItems),
+              success: function(response){
+              console.log(response);
+              }
+            });
 
           });
                   
@@ -666,7 +767,7 @@ Setup Subject Gradebook</h5></a></li>
         
              url:"<?php echo base_url(); ?>gradebook/get_gradeitems/"+schoolId+"/"+classId + "/" +subjectId+ "/" + sectionId,
              type:"get",
-            success: function(data){
+             success: function(data){
 
              //get all the gradeitems and assign them to the variable arr
              gradeItems = JSON.parse(data);
@@ -714,11 +815,22 @@ Setup Subject Gradebook</h5></a></li>
       var cell_1 = row.insertCell(1);
       cell_1.innerHTML = "<b>studentID</b>";
       
+      //this second row contains the gradeItem ids
+      var secrow = table.insertRow(1);
+      //these first two cells are empty
+      var secCell = secrow.insertCell(0);
+      var secCell1 = secrow.insertCell(1);
+
+     // var secCell1 = secrow.insertCell(2);
+     // secCell1.innerText = 2;
 
       //start from the second cell in the header row, because it is already populated
       for (let i = 0; i < numCells; i++) {
         var cell = row.insertCell(-1); //insert the cell at the end of the row
+        var secRowCell = secrow.insertCell(-1);
+
         cell.innerHTML = '<b>'+datArry[i].gradeitem_name+'</b>';
+        secRowCell.innerHTML = '<b>'+datArry[i].id +'</b>';
       //  alert('Cell headername datArry['+i+'] : ' +datArry[i].gradeitem_name);
       
     }
@@ -728,6 +840,31 @@ Setup Subject Gradebook</h5></a></li>
     //cell.name = "avggrade";
     //  cell.innerHTML = "<b>Average Grade</b>";
     
+  }
+
+  function getmarkingperiod_entergrades()
+  {
+     alert("Marking period");
+     var schoolId = document.getElementById('schoolid').value;
+     var mrkprdElement = document.getElementById('markingperiodId');
+     //clear the select tage
+     mrkprdElement.innerHTML = "";
+     //$('#markingperiodId').innerHTML = "";
+
+     $.ajax({
+      url:"<?php echo base_url(); ?>gradebook/getmakingpd/"+schoolId,
+      type:"get",
+            success: function(data){
+             var markprd = JSON.parse(data);
+             console.log(markprd[0].marking_periodName);
+
+             for(var i = 0; i < markprd.length; i++)
+                {
+                  $('#markingperiodId').append('<option value ="'+markprd[i].id +'">'+ markprd[i].marking_periodName+'</option>');
+                }
+
+            }
+     });
   }
 
   function submitdata()
@@ -744,6 +881,32 @@ Setup Subject Gradebook</h5></a></li>
         });
 
         event.preventDefault();
+  }
+
+  function getAccademicYear()
+  {
+    var schoolId = document.getElementById('schoolid').value;
+    var sccademicYearName = document.getElementById('academicyearName');
+    var sccademicYearId = document.getElementById('academicyearId');
+
+    $.ajax({
+      url : "<?php echo base_url(); ?>gradebook/getAccademicYear/"+schoolId,
+      type : "get",
+      success: function(data){
+             var accayr = JSON.parse(data);
+             var academicyearId = accayr[0].id;
+             var academicYearName = accayr[0].session_year;
+             
+            console.log('Number of Accademic year '+accayr.length);
+          //   
+             console.log('Accademic Year :'+academicYearName);
+             console.log('Accademic Year Id :'+academicyearId);
+             
+             sccademicYearName.value = academicYearName;
+             sccademicYearId.value = academicyearId;
+              
+            }
+    });
   }
   </script>
 

@@ -128,9 +128,86 @@ class Gradebook extends MY_Controller
         $data['subject_id'] = $subjectid;
         $data['section_id'] = $sectionid;
 
-         $resultObj = $this->gim->get_gradeitems($data);
-         echo json_encode($resultObj);
+        $resultObj = $this->gim->get_gradeitems($data);
+        echo json_encode($resultObj);
 	}
+
+	public function getmakingpd($schoolId)
+	{
+		$result = $this->db->get_where('markingperiod', array('school_id' => $schoolId))->result();
+		echo json_encode($result);
+	}
+
+	public function saveGradebookitems()
+	{
+		//retreive the data sent by ajax from the gradebook grade entry page
+		$data = $this->input->raw_input_stream;
+		/*$data = '[{"19":"55","20":"3","23":"11","studentId":"27","markingprd":"1",
+				"subjectId":"14","schoolId":"10","sectionid":"35","class_id":"23","accademicYear":"8"},
+				{"19":"42","20":"24","23":"52","studentId":"30","markingprd":"1",
+				"subjectId":"14","schoolId":"10","sectionid":"35","class_id":"23","accademicYear":"8"}]';
+					*/
+		echo $data;
+		
+		//decode the json string sent from the client into an associate array
+		//by setting the second parameter of json_decode() to true
+	  	 $data =  json_decode($data, true);
+	//	 var_dump($data);
+			//echo $data;
+		for ($i=0; $i < count($data); $i++) { 
+			# code...
+			//echo 'StudentId '.$data[$i]["studentId"];
+			//create a new empty array
+			$stuRec = [];
+			
+		
+		 
+		
+
+			foreach ($data[$i] as $key => $value) {
+
+				$stuRec["school_id"] = $data[$i]["schoolId"];
+				$stuRec["student_id"] = $data[$i]["studentId"];
+				$stuRec["subject_id"] = $data[$i]["subjectId"];
+				$stuRec["marking_period_Id"] = $data[$i]["markingprd"];
+				$stuRec["class_id"] = $data[$i]['class_id'];
+				$stuRec["section_id"]  = $data[$i]['sectionid'];
+				$stuRec["accademicYearId"] = $data[$i]["accademicYear"];
+				# code...
+				//create associative array
+				//if the $key value is numeric
+				if(is_int($key))
+				{
+					//echo $key.'Is integer<br>';
+					//echo $i.'  '.$key.' : '.$value.'<br>';
+					$stuRec["gradeitem_id"] = $key;
+					$stuRec["gradeitem_grade"] = $value;
+					//echo '<br>';
+				}
+				
+			}
+		//	echo '<br>';
+		//	echo '<br>';
+		//	var_dump($stuRec);
+		//	echo '<br>';
+		//	echo json_encode($stuRec);
+		  } 
+		   //echo gettype($data[0]["19"]);
+		  
+		   //echo 'StudentId '.$data[1]["studentId"];
+		
+	}	
+	public function getAccademicYear($schoolId)
+	{
+		
+        $query = "select id, session_year from academic_years where is_running = 1 and school_id =".$schoolId;
+       // echo $query;
+		$statement = $this->db->query($query);
+        $result = $statement->result();
+        $response = json_encode($result);  
+		echo $response;
+    
+	}			
 		
 }
 

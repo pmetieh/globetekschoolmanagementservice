@@ -155,46 +155,33 @@ class Gradebook extends MY_Controller
 	//	 var_dump($data);
 			//echo $data;
 		for ($i=0; $i < count($data); $i++) { 
-			# code...
-			//echo 'StudentId '.$data[$i]["studentId"];
-			//create a new empty array
-			$stuRec = [];
 			
-		
-		 
-		
+			$stuRec = [];
 
-			foreach ($data[$i] as $key => $value) {
-
-				$stuRec["school_id"] = $data[$i]["schoolId"];
-				$stuRec["student_id"] = $data[$i]["studentId"];
-				$stuRec["subject_id"] = $data[$i]["subjectId"];
-				$stuRec["marking_period_Id"] = $data[$i]["markingprd"];
-				$stuRec["class_id"] = $data[$i]['class_id'];
-				$stuRec["section_id"]  = $data[$i]['sectionid'];
-				$stuRec["accademicYearId"] = $data[$i]["accademicYear"];
-				# code...
-				//create associative array
-				//if the $key value is numeric
-				if(is_int($key))
-				{
-					//echo $key.'Is integer<br>';
-					//echo $i.'  '.$key.' : '.$value.'<br>';
-					$stuRec["gradeitem_id"] = $key;
-					$stuRec["gradeitem_grade"] = $value;
-					//echo '<br>';
-				}
+							
+			$stuRec["school_id"] = $data[$i]["schoolId"];
+			$stuRec["student_id"] = $data[$i]["studentId"];
+			$stuRec["subject_id"] = $data[$i]["subjectId"];
+			$stuRec["marking_period_Id"] = $data[$i]["markingprd"];
+			$stuRec["class_id"] = $data[$i]['class_id'];
+			$stuRec["section_id"]  = $data[$i]['sectionid'];
+			$stuRec["accademicYearId"] = $data[$i]["accademicYear"];
+			$stuRec["gradeitem_id"] = $data[$i]["gradeitemId"];
+			$stuRec["gradeitem_grade"] = $data[$i]["grade"];
 				
-			}
+				//insert data 
+				$rowId = $this->gim->insert("gradeitem_grade", $stuRec);
+				echo "Student grades successfully inserted record wit Id ".$rowId."\n";	
+		
 		//	echo '<br>';
 		//	echo '<br>';
-		//	var_dump($stuRec);
+		
 		//	echo '<br>';
 		//	echo json_encode($stuRec);
 		  } 
-		   //echo gettype($data[0]["19"]);
-		  
-		   //echo 'StudentId '.$data[1]["studentId"];
+
+		  var_dump($stuRec);
+		   
 		
 	}	
 	public function getAccademicYear($schoolId)

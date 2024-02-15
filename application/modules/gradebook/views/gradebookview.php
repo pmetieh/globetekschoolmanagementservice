@@ -449,8 +449,9 @@ Setup Subject Gradebook</h5></a></li>
                  alert(rowColtn[i].cells[1].getElementsByTagName('input')[0].value); 
                 gradeItems["studentId"] = rowColtn[i].cells[1].getElementsByTagName('input')[0].value;
                 //var memName = rowColtn[1].cells[n].innerText; 
-                var memName = rowColtn[1].cells[n].innerText;
-                gradeItems[memName] = rowColtn[i].cells[n].getElementsByTagName('input')[0].value; 
+                gradeItems["gradeitemId"] = rowColtn[1].cells[n].innerText; 
+               // var memName = rowColtn[1].cells[n].innerText;
+                gradeItems["grade"] = rowColtn[i].cells[n].getElementsByTagName('input')[0].value; 
               // }
                /* else{
                 var memName = rowColtn[1].cells[n].innerText; //assign the grade item id as property name 

@@ -431,69 +431,49 @@ Setup Subject Gradebook</h5></a></li>
              
               for (let n = 2; n < rowColtn[0].cells.length; n++) {
                 var gradeItems = {}; //create a new object with each iteration of the loop
-               //rowColtn[0].cells
-               // alert(rowColtn[0].cells[n].innerText);
-
-               //get the grade item ids from the second row
-
-               //if it is the second cell in the row, i.e n =  1, set the property name to studentId
-              // if(n == 1)
-               //{
-                //var memName = "studentId";
+              
                 gradeItems["markingprd"] = mrkprd;
                 gradeItems["subjectId"] = document.getElementById("subjectId").value;
                 gradeItems["schoolId"] = document.getElementById("schoolid").value;
                 gradeItems["sectionid"] = document.getElementById("sectionid").value;
                 gradeItems["class_id"] = document.getElementById("class_name").value;
                 gradeItems["accademicYear"] = document.getElementById('academicyearId').value; 
-                 alert(rowColtn[i].cells[1].getElementsByTagName('input')[0].value); 
+               //  alert(rowColtn[i].cells[1].getElementsByTagName('input')[0].value); 
                 gradeItems["studentId"] = rowColtn[i].cells[1].getElementsByTagName('input')[0].value;
                 //var memName = rowColtn[1].cells[n].innerText; 
+                //gradeitem Ids are gotten from the first row
                 gradeItems["gradeitemId"] = rowColtn[1].cells[n].innerText; 
                // var memName = rowColtn[1].cells[n].innerText;
                 gradeItems["grade"] = rowColtn[i].cells[n].getElementsByTagName('input')[0].value; 
-              // }
-               /* else{
-                var memName = rowColtn[1].cells[n].innerText; //assign the grade item id as property name 
-                // and assign the innerText to the id property 
-               } */
-               // var memName = rowColtn[1].cells[n].innerText; //'"' + rowColtn[0].cells[n].innerText +'"';
-               // memName = memName;
-               //  console.log("Mem name : "+ memName);
-               //console.log(rowColtn[i].cells[n].getElementsByTagName('input')[0].value);
-               /*  gradeItems[memName] = rowColtn[i].cells[n].getElementsByTagName('input')[0].value; //rowColtn[i].cells[n].innerText;// + ':';
-
-                gradeItems["markingprd"] = mrkprd;
-                gradeItems["subjectId"] = document.getElementById("subjectId").value;
-                gradeItems["schoolId"] = document.getElementById("schoolid").value;
-                gradeItems["sectionid"] = document.getElementById("sectionid").value;
-                gradeItems["class_id"] = document.getElementById("class_name").value;
-                gradeItems["accademicYear"] = document.getElementById('academicyearId').value; */
-
-               // console.log("gradeItems["+memName+"] : "+gradeItems[memName]); 
-                //console.log('Marking period : '+gradeItems["markingprd"]);
+              
 
                 //start assigning values from cell 1 in every row, because cell 0 has the students Name
                 //and cell 1 has the student Id.
+                //add the student record to the general array to create an array of objects
+                //clear the form
+
                 
+
                 allgradeItems.push(gradeItems);
+
+                /* for (let i = 0; i < rowColtn[0].cells.length; i++) {
+               //   rowColtn[i].cells[n].getElementsByTagName('input')[0].value = "";
+                  $('#grades_table input').val = "";
+                  
+                } */
+
               }
               
-
-              
-              //console.log("gradeItems[markingprd] : "+gradeItems["markingprd"]);
-              //console.log("gradeItems[schoolId] : "+gradeItems["schoolId"]);
-              //console.log("gradeItems[subjectId] : "+gradeItems["subjectId"]);
-
               //console.log(Object.keys(gradeItems));   
               
-              console.log("Added one grade Item : ");
-           //  console.log(allgradeItems);
+            //  console.log("Added one grade Item : ");
+           
               
             }
             //console.log(JSON.stringify(allgradeItems));
             
-            console.log('All gradeItems length '+allgradeItems.length);
+           // console.log('All gradeItems length '+allgradeItems.length);
+           //push the student records to the server
             $.ajax({
               url: "<?php echo base_url(); ?>gradebook/saveGradebookitems",
               type: 'POST',

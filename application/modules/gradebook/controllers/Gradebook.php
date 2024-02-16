@@ -170,7 +170,7 @@ class Gradebook extends MY_Controller
 			$stuRec["gradeitem_grade"] = $data[$i]["grade"];
 				
 				//insert data 
-				$rowId = $this->gim->insert("gradeitem_grade", $stuRec);
+			//	$rowId = $this->gim->insert("gradeitem_grade", $stuRec);
 				echo "Student grades successfully inserted record wit Id ".$rowId."\n";	
 		
 		//	echo '<br>';

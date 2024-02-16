@@ -456,11 +456,11 @@ Setup Subject Gradebook</h5></a></li>
 
                 allgradeItems.push(gradeItems);
 
-                /* for (let i = 0; i < rowColtn[0].cells.length; i++) {
+                for (let i = 0; i < rowColtn[0].cells.length; i++) {
                //   rowColtn[i].cells[n].getElementsByTagName('input')[0].value = "";
-                  $('#grades_table input').val = "";
+                  $('#grades_table [type=text]').val = "";
                   
-                } */
+                }
 
               }
               

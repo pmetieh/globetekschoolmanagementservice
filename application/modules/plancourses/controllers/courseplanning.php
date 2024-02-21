@@ -25,7 +25,7 @@ class Courseplanning extends MY_Controller
        // $this->CoursePlanning_Model->get_subject_list('1', '1');
         $this->layout->title('Course Planning');
 
-        $this->layout->view('courseplanningview', $this->$data);
+        $this->layout->view('plancoursesview', $this->$data);
         /// echo '<h1 style="font-size: bold; color: white;">'.'SchoolID '.$this->session->userdata('school_id').'</h1>';
         
     }

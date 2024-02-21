@@ -75,7 +75,7 @@
                 <?php if(has_permission(VIEW, 'courseplanning', 'addndrop') || has_permission(VIEW, 'courseplanning', 'plancourses')){ ?>
                 <li><a><i class="fa fa-shopping-cart"></i> <?php echo $this->lang->line('courseplanning'); ?> <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
-                            <li><a  href="<?php echo site_url('plancourses/courseplanning/plancourses'); ?>"><?php echo $this->lang->line('courseplanning'); ?></a></li>                                                 
+                            <li><a  href="<?php echo site_url('plancourses/courseplanning/index'); ?>"><?php echo $this->lang->line('courseplanning'); ?></a></li>                                                 
                             <li><a  href="<?php echo site_url('plancourses/courseplanning/addndrop'); ?>"><?php echo $this->lang->line('addndrop'); ?></a></li> 
                      
                 </ul>
@@ -474,7 +474,11 @@
                             </ul>
                         </li>
                     <?php } ?>
+
                     
+                    <?php if(has_permission(VIEW, 'reportcard', 'reportcard')){ ?>
+                        <li><a href="<?php echo site_url('reportcard/index'); ?>"><i class="fa fa-newspaper-o" aria-hidden="true"></i></i><?php echo $this->lang->line('reportcard'); ?></a></li>                   
+                    <?php } ?>
                     <?php if(has_permission(VIEW, 'academic', 'promotion')){ ?>
                         <li><a href="<?php echo site_url('academic/promotion'); ?>"><i class="fa fa-mail-forward"></i><?php echo $this->lang->line('promotion'); ?></a></li>                   
                     <?php } ?>

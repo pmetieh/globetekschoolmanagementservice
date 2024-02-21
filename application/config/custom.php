@@ -1664,3 +1664,4 @@ $config['my_courseplanning']['plancourses']['1'] = '0|0|1|0';
 $config['my_gradebook']['creategradebookitem']['1'] = '0|0|1|0';
 $config['my_gradebook']['addgrades']['1'] = '1|0|1|0';
 $config['my_gradebook']['deletegrades']['1'] = '0|0|1|1';
+$config['my_reportcard']['reportcard']['1'] = '1|1|1|1';

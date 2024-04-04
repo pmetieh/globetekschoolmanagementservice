@@ -13,15 +13,17 @@ class ReportCard extends My_Controller {
 
     public function index()
     {
-        echo "Loading index page";
+        //echo "Loading index page";
 
-       $this->layout->title($this->lang->line('reportcard') . ' | ' . SMS);
-       $this->layout->view('index', $this->data);
+      $this->layout->title($this->lang->line('reportcard') . ' | ' . SMS);
+      $this->layout->view('index', $this->data);//index
+      //
     }
 
-    public function reportcard()
+    public function reportcard($studentId, $school_id, $class_id) //, $section_id, $markingperoid_id)
     {
         echo "Loading report card page";
+        $this->load->view('reportcardview', $this->data);
     }
 }
 ?>

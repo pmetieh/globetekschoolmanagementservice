@@ -47,14 +47,12 @@ class Auth extends CI_Controller {
 
         if ($_POST) {
          
-           echo "<h1>alert('Login Function')</h1>";
-
             $data['username'] = $this->input->post('username');           
             $data['password'] = md5($this->input->post('password'));
 
             $login = $this->auth->get_single('users', $data);
 
-            var_dump($login);
+           // var_dump($login);
            
             if (!empty($login)) {
               

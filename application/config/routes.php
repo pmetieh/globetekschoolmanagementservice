@@ -88,3 +88,4 @@ $route['success-flash'] = 'MyFlashController/success';
 $route['error-flash'] = 'MyFlashController/error';
 $route['warning-flash'] = 'MyFlashController/warning';
 $route['info-flash'] = 'MyFlashController/info';
+//$route['reportcard/(:num)/(:num)/(:num)'] = 'reportcard/reportcard/$1/$2/$3';

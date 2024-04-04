@@ -164,18 +164,18 @@ Setup Subject Gradebook</h5></a></li>
 	</div> -->
  
 <!--<div class="row"><span class="glyphicon glyphicon-save"></span>-->
- 	<div class="form-group">
-                <div class="col-md-6">
-                    <button type="submit" class="btn btn-danger btn-lg" role="button"  id="submit"  name="submit">
-					<i class="fa fa-book fa-fw" aria-hidden="true">  
-          Add Graded Item</i></button>
+    <div class="form-group">
+                  <div class="col-md-6">
+                      <button type="submit" class="btn btn-danger btn-lg" role="button"  id="submit"  name="submit">
+            <i class="fa fa-book fa-fw" aria-hidden="true"></i>  
+            <span>Add Graded Item</span></button>
+                  </div>
+                  <div class="col-md-6">
+                      <button type="reset" class="btn btn-danger btn-lg" role="button" name="cancel">
+            <i class="fa fa-times" aria-hidden="true"></i> Cancel
+                          </button>
                 </div>
-                <div class="col-md-6">
-                    <button type="reset" class="btn btn-danger btn-lg" role="button" name="cancel">
-					<i class="fa fa-times" aria-hidden="true"></i> Cancel
-                        </button>
-   		         </div>
-   </div>
+    </div>
  <!--</div>-->
 	</form>
 	</div>
